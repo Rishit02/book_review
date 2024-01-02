@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 const Book = (props) => {
     const [books, setBooks] = useState([])
     const [reviews, setReviews] = useState([])
+    const [load, setLoad] = useState([])
     const param = useParams();
 
     useEffect(() => {
