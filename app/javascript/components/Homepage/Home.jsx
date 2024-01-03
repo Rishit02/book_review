@@ -16,7 +16,7 @@ const Home = () => {
         book_data => <Book key={book_data.id} attributes={book_data.attributes}/>
     )
     return (
-        <div className='container'>
+        <div className='container-fluid text-bg-dark p-3'>
             <Header />
             {list}
         </div>
