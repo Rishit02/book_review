@@ -4,7 +4,7 @@ module Api
             protect_from_forgery with: :null_session
             
             def create
-                r = Review.new(review_params)
+                r = book.review.new(review_params)
                 if r.save
                     render json: serialize(r), staus: :created
                 else
@@ -25,15 +25,15 @@ module Api
             def reviews
                 @reviews = Review.all
             end
-
             def review
-                @review = Review.find_by(id: params[:id])
+                @review ||= Review.find_by(id: params[:id])
             end
-
+            def book
+                @book ||= Book.find(params[:book_id])
+            end
             def review_params
                 params.require(:review).permit(:title, :description, :score, :book_id)
             end
-
             def errors(records)
                 { errors: records.errors.messages }
             end
