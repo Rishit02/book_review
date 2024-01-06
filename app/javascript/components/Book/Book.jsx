@@ -21,7 +21,12 @@ const Book = (props) => {
             setLoaded(true)
         })
         .catch(resp => console.log(resp))
-    }, [])
+    }, [review])
+
+    const setRating = (score, e) => {
+        e.preventDefault()  
+        setReview({ ...review, score })
+      }
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -36,12 +41,12 @@ const Book = (props) => {
         const slug = param.slug
         const book_id = parseInt(book.data.id)
         review.book_id = book_id
-        
+
         axios.post(`/api/v1/book/${slug}/review`, review)
         .then( resp => {
         //   setReviews([...reviews, resp.data.data])
-          setReview({ title: '', description: '', score: 0 })
-          setError('')
+          setReview({ title:"", description:"", score:0 })
+          setError("")
         })
         .catch( resp => {
           let error
@@ -78,6 +83,7 @@ const Book = (props) => {
                     attributes={book.data.attributes} 
                     handleChange={handleChange} 
                     handleSubmit={handleSubmit} 
+                    setRating={setRating}
                     review={review} />
                     }
                 </div>

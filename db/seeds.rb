@@ -8,7 +8,7 @@ Review.destroy_all
         title: Faker::Book.unique.title,
         author:  Faker::Book.unique.author, 
         publisher: Faker::Book.unique.publisher,
-        genre: Faker::Book.unique.genre
+        genre: Faker::Book.genre
     )
     5.times do
         title = "My review"
