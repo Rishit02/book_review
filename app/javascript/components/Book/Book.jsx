@@ -8,6 +8,7 @@ import ReviewForm from "./ReviewForm";
 const Book = (props) => {
     const [book, setBook] = useState({})
     const [review, setReview] = useState({})
+    const [reviews, setReviews] = useState({})
     const [loaded, setLoaded] = useState(false)
     const [error, setError] = useState([])
     const param = useParams();
@@ -18,6 +19,7 @@ const Book = (props) => {
         axios.get(url)
         .then(resp => {
             setBook(resp.data)
+            setReviews(resp.data.included)
             setLoaded(true)
         })
         .catch(resp => console.log(resp))
@@ -59,7 +61,19 @@ const Book = (props) => {
           }
           setError(error)
         })
-      }
+    }
+
+    let userReviews
+    if (loaded) {
+        userReviews = reviews.map((review, index) => {
+            return (
+                <>
+                    <Review key={index} attributes={review.attributes} />
+                    <br />
+                </>
+            )
+        })
+    }
 
     return (
         <div className="container-fluid text-bg-dark p-3 d-flex justify-content-center">
@@ -71,10 +85,10 @@ const Book = (props) => {
                     loaded &&
                     <Header 
                     attributes={book.data.attributes} 
-                    reviews={book.data.relationships.review} 
+                    lngth={book.data.relationships.review.data.length} 
                     />
                     }
-
+                    {userReviews}
                 </div>
                 <div className="col-sm-4">
                     {

@@ -5,11 +5,11 @@ module Api
 
             # /book
             def index
-                render json: serialize(books)
+                render json: serialize(books, options)
             end
             # /book
             def show
-                render json: serialize(book)
+                render json: serialize(book, options)
             end
             def create
                 book = Book.new(book_params)
@@ -42,6 +42,9 @@ module Api
             end
             def book
                 @book = Book.find_by(slug: params[:slug])
+            end
+            def options
+                @options ||= { include: %i[review] }
             end
             def book_params
                 params.require(:book).permit(:title, :author, :publisher, :genre)
