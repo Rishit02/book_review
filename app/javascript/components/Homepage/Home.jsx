@@ -17,8 +17,10 @@ const Home = () => {
     )
     return (
         <div className='container-fluid text-bg-dark p-3'>
-            <Header />
-            {list}
+            <div className='container'>
+                <Header />
+                {list}
+            </div>
         </div>
     );
 }

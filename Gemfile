@@ -6,7 +6,7 @@ ruby "3.2.2"
 gem "rails", "~> 7.1.2"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 gem 'fast_jsonapi'
-
+gem 'devise', '~> 4.9', '>= 4.9.3'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

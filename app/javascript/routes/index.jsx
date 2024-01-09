@@ -4,6 +4,7 @@ import Home from "../components/Homepage/Home";
 import Navbar from "../components/Navbar";
 import Book from "../components/Book/Book"
 import ReviewForm from "../components/Book/ReviewForm";
+import LoginPage from "../components/Login/LoginPage"
 
 export default (
   <>
@@ -13,6 +14,7 @@ export default (
         <Route path="/" element={<Home />} />
         <Route path="/book/:slug" element={<Book />} />
         <Route path="/book/:slug/add-review" element={<ReviewForm />}/>
+        <Route path="/login" element={<LoginPage />}></Route>
       </Routes>
     </Router>
   </>

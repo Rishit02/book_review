@@ -76,10 +76,10 @@ const Book = (props) => {
     }
 
     return (
-        <div className="container-fluid text-bg-dark p-3 d-flex justify-content-center">
+        <div className="container-fluid text-bg-dark p-3">
             <div className="container">
             <div className="row">
-                <div className="col-sm-6">
+                <div className="col">
                     <br />
                     {
                     loaded &&
@@ -90,7 +90,7 @@ const Book = (props) => {
                     }
                     {userReviews}
                 </div>
-                <div className="col-sm-4">
+                <div className="col">
                     {
                     loaded &&
                     <ReviewForm 
