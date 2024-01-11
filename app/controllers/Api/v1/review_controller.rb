@@ -1,6 +1,7 @@
 module Api
     module V1
         class ReviewController < ApplicationController
+            # before_action :authenticate_member!
             protect_from_forgery with: :null_session
             
             def create

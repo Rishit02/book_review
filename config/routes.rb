@@ -6,9 +6,10 @@ Rails.application.routes.draw do
       resources :book, param: :slug do
         resources :review, only: [:create, :destroy]
       end
+    end
+  end
 
-    namespace :v2 do
-      devise_for :users, path: '', path_names: {
+  devise_for :users, path: 'users', path_names: {
         sign_in: 'login',
         sign_out: 'logout', 
         registration: 'signup'
@@ -17,9 +18,7 @@ Rails.application.routes.draw do
           sessions: 'users/sessions',
           registrations: 'users/registrations'
       }
-    end
-    end
-  end
+    
   get '*path', to: 'pages#index', via: :all
 
 end

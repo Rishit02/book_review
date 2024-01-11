@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 
-const LoginForm = () => {
+const SignupForm = () => {
     const [user, setUser] = useState({})
     const [error, setError] = useState([])
-    const nav = useNavigate()
+    const nav = useNavigate();
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post(`/users/login`, {user})
+        user.password_confirmation = user.password
+        axios.post(`/users/signup`, {user})
         .then( resp => {
             console.log("user", user)
             setUser({ email:"", password:"" })
@@ -28,7 +30,7 @@ const LoginForm = () => {
 
     return (
         <div className="container">
-            <h1>Login Page</h1>
+            <h1>Signup Page</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -52,11 +54,11 @@ const LoginForm = () => {
                         value={user.password} />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Login
+                    Signup
                 </Button>
             </Form>
         </div>
     );
 }
 
-export default LoginForm;
+export default SignupForm;

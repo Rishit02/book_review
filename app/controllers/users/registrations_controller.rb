@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  protect_from_forgery with: :null_session
+
   respond_to :json
 
   # before_action :configure_sign_up_params, only: [:create]
@@ -72,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }
     else 
       render json: {
-        status: {message:"User could not be created. #{resource.error.full_messages.to_sentence}"}, 
+        status: {message:"User could not be created. #{resource.errors.full_messages.to_sentence}"}, 
         status: :unprocessable_entity
       }
     end
