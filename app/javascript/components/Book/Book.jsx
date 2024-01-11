@@ -36,10 +36,8 @@ const Book = (props) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-
         // const csrfToken = document.querySelector('[name=csrf-token]').content
         // axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
-
         const slug = param.slug
         const book_id = parseInt(book.data.id)
         review.book_id = book_id
