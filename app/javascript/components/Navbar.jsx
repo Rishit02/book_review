@@ -2,10 +2,16 @@ import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link, NavLink } from 'react-router-dom'
+import axios from 'axios';
+import { NavLink } from 'react-router-dom'
 
 function BasicExample() {
+
+  const handleClick = (e) => {
+    axios.delete("/api/v1/logout")
+    .then(resp => console.log("User logged out"))
+    .catch(err => console.log("Error: ", err))
+  }
   return (
     <Navbar expand="lg" className="bg-primary">
       <Container>
@@ -16,6 +22,7 @@ function BasicExample() {
             <Nav.Link as={NavLink} to='/'>Home</Nav.Link>
             <Nav.Link as={NavLink} to='/login'>Login</Nav.Link>
             <Nav.Link as={NavLink} to='/signup'>Signup</Nav.Link>
+            <Nav.Link as={NavLink} to='/' onClick={handleClick}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

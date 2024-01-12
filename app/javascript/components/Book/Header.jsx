@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button';
-import ReviewForm from "./ReviewForm";
+import React from "react";
 
 const Header = (props) => {
     const { title, author, publisher, genre, average_score } = props.attributes
